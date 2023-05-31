@@ -1,0 +1,101 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class=" d-flex justify-content-end m-1" >
+        <a class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal">AddUser</a>
+      </div>  
+    </div>
+  </div>
+</div>
+<!-- -------------------------------------------------- -->
+<div class="container">
+  <div class="row">
+    <div class="col-12">      
+      <table class="table table-striped ">
+      <thead> 
+        <tr>
+          <th>Id</th>  
+          <th>Name</th>
+          <th>Email</th>
+          <th>Number</th>
+          <th>Address</th>
+          <th>Details</th>
+          <th>Edit</th>
+          <th>Delete</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of users">
+          <td>{{u.id}}</td>
+          <td>{{u.name}}</td>
+          <td>{{u.email}}</td>
+          <td>{{u.phone}}</td>
+          <td>{{u.address.street}}  {{u.address.suite}}  {{u.address.city}}</td>
+          
+          <td><a routerLink="/users/{{u.id}}" class="btn btn-secondary ">details</a></td>
+          <td><a routerLink="update/{{u.id}}" class="btn btn-secondary">edit</a></td>
+          <td><a class="btn btn-secondary" (click)="DeleteUser(u.id)" >Delete</a></td>
+        </tr>
+      </tbody>
+    </table> 
+  </div>
+  </div>
+</div>
+
+<!-- //////////////////////////////////////////////////////////// -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add User</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+              <div class="col">
+                  <h1 class=" text-center text-dark w-90 m-auto mt-1">Adding NewUser</h1>
+                  <div class="form" >
+                      <div class="form-group d-flex m-2 ">
+                      <label class="col-2">Name</label>
+                      <input #name type="text" class="form-control">
+                      </div>
+                      <div class="form-group d-flex m-2 ">
+                        <label class="col-2">Email</label>
+                        <input #email type="email" class="form-control">
+                      </div>
+                      <div class="form-group d-flex m-2 ">
+                        <label class="col-2">Phone</label>
+                        <input #phone type="number" class="form-control">
+                      </div>
+                      <div class="form-group d-flex m-2">
+                        <label class="col-2">street</label>
+                        <input #street type="text"class="form-control">
+                      </div>
+                      <div class="form-group d-flex m-2">
+                          <label class="col-2">suite</label>
+                          <input #suite type="text"class="form-control">
+                      </div>
+                      <div class="form-group d-flex m-2">
+                            <label class="col-2">city</label>
+                            <input #city type="text"class="form-control">
+                      </div>
+                      <div class="form-group d-flex m-2 justify-content-center">
+                      <input type="button" value="ADD" class="btn btn-outline-dark"(click)="Add(name.value, email.value, phone.value,street.value,suite.value,city.value)">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<!-- -------------------------------------------------------- -->
+

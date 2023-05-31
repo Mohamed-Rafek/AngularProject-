@@ -1,0 +1,35 @@
+<div *ngIf=" user ; else falseBlock" class="alert alert-success text-center ">
+    <p>Name: {{user.name}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Phone: {{user.phone}}</p>
+    <p>Address: {{user.address.street}}  {{user.address.suite}}  {{user.address.city}}</p>
+    
+</div>
+<!-- <div *ngFor="let album of albums" class="alert alert-info text-center ">
+    
+        {{album.title}}
+    
+</div> -->
+
+<div class="container">
+    <div class="row">
+        <div  class="col-4" *ngFor="let album of albums" routerLink="/albums/{{album.id}}" >
+            <div class="bg-dark text-light d-flex justify-content-center rounded flex-column m-3">
+                <div class="fs-5 text-center p-4">
+                    <p>{{album.id}}</p>
+
+                    <div class="fs-5 text-center p-2 bg-secondary">
+                        <p>{{album.title}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #falseBlock>
+    <div style="color: red" >
+       <h1>Loading...</h1>
+    </div>
+</ng-template>
